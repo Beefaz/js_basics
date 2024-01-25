@@ -86,14 +86,14 @@ const count_zeroes_ones_twos = (num1, num2) => {
 document.write('4. ' + count_zeroes_ones_twos(0, 2) + '<br/>');
 
 // 5.
-document.write('<h3>5. ' + rand(1, 6) + '</h3>' + '<br/>');
+document.write('<h3>5. ' + rand(1, 6) + '</h3>');
 
 // 6.
 const getStyledHtmlNumber = (num1, num2) => {
   const random_number = rand(num1, num2);
 
-  if (random_number > 0) return '<span style="color: blue">' + random_number + '</span><br/>';
-  if (random_number < 0) return '<span style="color: green">' + random_number + '</span><br/>';
+  if (random_number > 0) return '<span style="color: blue">' + random_number + '</span>';
+  if (random_number < 0) return '<span style="color: green">' + random_number + '</span>';
   return '<span style="color: red">' + random_number + '</span>'
 }
 document.write('<span>6. ' + getStyledHtmlNumber(-10, 10) + '</span><br/>');
@@ -108,13 +108,14 @@ const getCandlePrices = (num1, num2) => {
 }
 document.write('7. ' + getCandlePrices(5, 3000) + '<br/>');
 
+// 8.
 const getAverages = (num1, num2) => {
   const random_no1 = rand(num1, num2);
   const random_no2 = rand(num1, num2);
   const random_no3 = rand(num1, num2);
   const average = Math.round((random_no1 + random_no2 + random_no3) / 3);
 
-  let second_average = null;
+  let second_average;
   let total = 0
   let totalDivider = 0;
 
@@ -143,7 +144,131 @@ const getAverages = (num1, num2) => {
 
   return 'average: ' + average + '; second average: ' + second_average;
 }
-document.write('8. ' + getAverages(0, 100));
+document.write('8. ' + getAverages(0, 100) + '<br/>');
+
+// 9.
+const getTimes = () => {
+  const seconds = rand(0, 60);
+  const minutes = rand(0, 60);
+  const hours = rand(0, 12);
+
+  const currentTime = new Date(0).setHours(hours, minutes, seconds);
+  const formattedCurrentTime = new Intl.DateTimeFormat('lt-LT', {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  }).format(currentTime);
+
+  const addedSeconds = new Date(rand(0, 300) * 1000).getTime();
+  const totalTime = new Date(currentTime).getTime() + addedSeconds;
+  const formattedTotalTime = new Intl.DateTimeFormat('lt-LT', {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  }).format(totalTime);
+
+  return 'time: ' + formattedCurrentTime + '; added seconds: ' + addedSeconds / 1000 + '; end time:' + formattedTotalTime;
+}
+document.write('9. ' + getTimes() + '<br/>');
+
+// 10.
+const sortRandomSixNumbers = (num1, num2) => {
+  let random_no1 = rand(num1, num2);
+  let random_no2 = rand(num1, num2);
+  let random_no3 = rand(num1, num2);
+  let random_no4 = rand(num1, num2);
+  let random_no5 = rand(num1, num2);
+  let random_no6 = rand(num1, num2);
+  document.write('10. start '+ `${random_no6} ${random_no5} ${random_no4} ${random_no3} ${random_no2} ${random_no1}`, '<br/>');
+
+  //5x
+  if (random_no6 - random_no5 < 0) {
+    const tempValue = random_no6;
+    random_no6 = random_no5;
+    random_no5 = tempValue;
+  }
+  if (random_no5 - random_no4 < 0) {
+    const tempValue = random_no5;
+    random_no5 = random_no4;
+    random_no4 = tempValue;
+  }
+  if (random_no4 - random_no3 < 0) {
+    const tempValue = random_no4;
+    random_no4 = random_no3;
+    random_no3 = tempValue;
+  }
+  if (random_no3 - random_no2 < 0) {
+    const tempValue = random_no3;
+    random_no3 = random_no2;
+    random_no2 = tempValue;
+  } if (random_no2 - random_no1 < 0) {
+    const tempValue = random_no2;
+    random_no2 = random_no1;
+    random_no1 = tempValue;
+  }
+
+  //4x
+  if (random_no6 - random_no5 < 0) {
+    const tempValue = random_no6;
+    random_no6 = random_no5;
+    random_no5 = tempValue;
+  }
+  if (random_no5 - random_no4 < 0) {
+    const tempValue = random_no5;
+    random_no5 = random_no4;
+    random_no4 = tempValue;
+  }
+  if (random_no4 - random_no3 < 0) {
+    const tempValue = random_no4;
+    random_no4 = random_no3;
+    random_no3 = tempValue;
+  }
+  if (random_no3 - random_no2 < 0) {
+    const tempValue = random_no3;
+    random_no3 = random_no2;
+    random_no2 = tempValue;
+  }
+
+  //3x
+  if (random_no6 - random_no5 < 0) {
+    const tempValue = random_no6;
+    random_no6 = random_no5;
+    random_no5 = tempValue;
+  }
+  if (random_no5 - random_no4 < 0) {
+    const tempValue = random_no5;
+    random_no5 = random_no4;
+    random_no4 = tempValue;
+  }
+  if (random_no4 - random_no3 < 0) {
+    const tempValue = random_no4;
+    random_no4 = random_no3;
+    random_no3 = tempValue;
+  }
+
+  //2x
+  if (random_no6 - random_no5 < 0) {
+    const tempValue = random_no6;
+    random_no6 = random_no5;
+    random_no5 = tempValue;
+  }
+  if (random_no5 - random_no4 < 0) {
+    const tempValue = random_no5;
+    random_no5 = random_no4;
+    random_no4 = tempValue;
+  }
+
+  //1x
+  if (random_no6 - random_no5 < 0) {
+    const tempValue = random_no6;
+    random_no6 = random_no5;
+    random_no5 = tempValue;
+  }
 
 
+  return `${random_no6} ${random_no5} ${random_no4} ${random_no3} ${random_no2} ${random_no1}`;
+}
+document.write('10. end ' + sortRandomSixNumbers(1000, 9999) + '<br/><br/>');
 
+
+document.write('<a href="Kintamieji%20ir%20sąlygos.pdf">Užduotis</a>')
