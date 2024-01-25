@@ -134,13 +134,11 @@ const getAverages = (num1, num2) => {
     totalDivider++;
   }
 
-
   if (totalDivider === 0) {
     second_average = `doesn't exist`;
   } else {
     second_average = Math.round(total / totalDivider);
   }
-
 
   return 'average: ' + average + '; second average: ' + second_average;
 }
@@ -179,7 +177,7 @@ const sortRandomSixNumbers = (num1, num2) => {
   let random_no4 = rand(num1, num2);
   let random_no5 = rand(num1, num2);
   let random_no6 = rand(num1, num2);
-  document.write('10. start '+ `${random_no6} ${random_no5} ${random_no4} ${random_no3} ${random_no2} ${random_no1}`, '<br/>');
+  document.write('10. start ' + `${random_no6} ${random_no5} ${random_no4} ${random_no3} ${random_no2} ${random_no1}`, '<br/>');
 
   //5x
   if (random_no6 - random_no5 < 0) {
@@ -201,7 +199,8 @@ const sortRandomSixNumbers = (num1, num2) => {
     const tempValue = random_no3;
     random_no3 = random_no2;
     random_no2 = tempValue;
-  } if (random_no2 - random_no1 < 0) {
+  }
+  if (random_no2 - random_no1 < 0) {
     const tempValue = random_no2;
     random_no2 = random_no1;
     random_no1 = tempValue;
@@ -264,7 +263,6 @@ const sortRandomSixNumbers = (num1, num2) => {
     random_no6 = random_no5;
     random_no5 = tempValue;
   }
-
 
   return `${random_no6} ${random_no5} ${random_no4} ${random_no3} ${random_no2} ${random_no1}`;
 }
