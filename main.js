@@ -19,9 +19,10 @@ const divide_bigger_random_from_lower_random = () => {
   const random_no1 = rand(0, 4);
   const random_no2 = rand(0, 4);
 
-  if (random_no2 >= random_no1) return random_no1 !== 0 ? random_no2 / random_no1 : 'dalyba iš nulio negalima';
 
-  return random_no2 !== 0 ? random_no1 / random_no2 : 'dalyba iš nulio negalima';
+  if (random_no2 >= random_no1) return random_no1 !== 0 ? Math.round(random_no2 / random_no1 *100 ) / 100: 'dalyba iš nulio negalima';
+
+  return random_no2 !== 0 ? Math.round(random_no1 / random_no2 * 100 ) / 100 : 'dalyba iš nulio negalima';
 }
 document.write('2. ' + divide_bigger_random_from_lower_random() + '<br/>');
 
@@ -102,8 +103,8 @@ document.write('<span>6. ' + getStyledHtmlNumber(-10, 10) + '</span><br/>');
 const getCandlePrices = (num1, num2) => {
   const random_number = rand(num1, num2);
 
-  if (random_number > 2000) return 'discount - 4%, total:' + random_number * 0.96;
-  if (random_number > 1000) return 'discount - 3%, total:' + random_number * 0.97;
+  if (random_number > 2000) return 'discount - 4%, total:' +  Math.round(random_number * 0.96 / 100) * 100;
+  if (random_number > 1000) return 'discount - 3%, total:' + Math.round(random_number * 0.97 / 100) * 100;
   return 'total:' + random_number;
 }
 document.write('7. ' + getCandlePrices(5, 3000) + '<br/>');
