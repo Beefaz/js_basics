@@ -103,7 +103,6 @@ document.write('<span>6. ' + getStyledHtmlNumber(-10, 10) + '</span><br/>');
 const getCandlePrices = (num1, num2) => {
   const random_number = rand(num1, num2);
 
-  document.write(' This one->>' +random_number +'   ');
   if (random_number > 2000) return 'discount - 4%, total:' + (random_number * 0.96).toFixed(2);
   if (random_number > 1000) return 'discount - 3%, total:' + (random_number * 0.97).toFixed(2);
   return 'total:' + random_number;
