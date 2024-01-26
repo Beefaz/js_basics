@@ -97,7 +97,7 @@ const getStyledHtmlNumber = (num1, num2) => {
   if (random_number < 0) return '<span style="color: green">' + random_number + '</span>';
   return '<span style="color: red">' + random_number + '</span>'
 }
-document.write('<span>6. ' + getStyledHtmlNumber(-10, 10) + '</span><br/>');
+document.write('<span>6. ' + getStyledHtmlNumber(-10, 10) + ' ' + getStyledHtmlNumber(-10, 10) + ' ' + getStyledHtmlNumber(-10, 10)+ '</span><br/>');
 
 // 7.
 const getCandlePrices = (num1, num2) => {
