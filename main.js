@@ -138,7 +138,7 @@ const getAverages = (num1, num2) => {
   if (totalDivider === 0) {
     second_average = `doesn't exist`;
   } else {
-    second_average = (total / totalDivider).toFixed(2);
+    second_average = Math.round(total / totalDivider * 100) / 100;
   }
 
   return 'average: ' + average + '; second average: ' + second_average;
