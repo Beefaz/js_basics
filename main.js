@@ -20,9 +20,9 @@ const divide_bigger_random_from_lower_random = () => {
   const random_no2 = rand(0, 4);
 
 
-  if (random_no2 >= random_no1) return random_no1 !== 0 ? Math.round(random_no2 / random_no1 *100 ) / 100: 'dalyba iš nulio negalima';
+  if (random_no2 >= random_no1) return random_no1 !== 0 ? (random_no2 / random_no1).toFixed(2): 'dalyba iš nulio negalima';
 
-  return random_no2 !== 0 ? Math.round(random_no1 / random_no2 * 100 ) / 100 : 'dalyba iš nulio negalima';
+  return random_no2 !== 0 ? (random_no1 / random_no2).toFixed(2) : 'dalyba iš nulio negalima';
 }
 document.write('2. ' + divide_bigger_random_from_lower_random() + '<br/>');
 
@@ -103,8 +103,9 @@ document.write('<span>6. ' + getStyledHtmlNumber(-10, 10) + '</span><br/>');
 const getCandlePrices = (num1, num2) => {
   const random_number = rand(num1, num2);
 
-  if (random_number > 2000) return 'discount - 4%, total:' +  Math.round(random_number * 0.96 / 100) * 100;
-  if (random_number > 1000) return 'discount - 3%, total:' + Math.round(random_number * 0.97 / 100) * 100;
+  document.write(' This one->>' +random_number +'   ');
+  if (random_number > 2000) return 'discount - 4%, total:' +  (random_number * 0.96).toFixed(2);
+  if (random_number > 1000) return 'discount - 3%, total:' + (random_number * 0.97).toFixed(2);
   return 'total:' + random_number;
 }
 document.write('7. ' + getCandlePrices(5, 3000) + '<br/>');
@@ -114,7 +115,7 @@ const getAverages = (num1, num2) => {
   const random_no1 = rand(num1, num2);
   const random_no2 = rand(num1, num2);
   const random_no3 = rand(num1, num2);
-  const average = Math.round((random_no1 + random_no2 + random_no3) / 3);
+  const average = ((random_no1 + random_no2 + random_no3) / 3).toFixed(2);
 
   let second_average;
   let total = 0
@@ -138,7 +139,7 @@ const getAverages = (num1, num2) => {
   if (totalDivider === 0) {
     second_average = `doesn't exist`;
   } else {
-    second_average = Math.round(total / totalDivider);
+    second_average = (total / totalDivider).toFixed(2);
   }
 
   return 'average: ' + average + '; second average: ' + second_average;
