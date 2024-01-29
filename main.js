@@ -19,7 +19,6 @@ const divide_bigger_random_from_lower_random = () => {
   const random_no1 = rand(0, 4);
   const random_no2 = rand(0, 4);
 
-
   if (random_no2 >= random_no1) return random_no1 !== 0 ? Math.round(random_no2 / random_no1 * 100) / 100: 'dalyba iš nulio negalima';
 
   return random_no2 !== 0 ? Math.round(random_no1 / random_no2 * 100) / 100 : 'dalyba iš nulio negalima';
@@ -31,6 +30,7 @@ const get_middle_number_from_random_set = (num1, num2) => {
   const random_no1 = rand(num1, num2);
   const random_no2 = rand(num1, num2);
   const random_no3 = rand(num1, num2);
+
 
   if (random_no3 > random_no2 && random_no3 > random_no1) return random_no2 > random_no1 ? random_no2 : random_no1;
   if (random_no2 > random_no1 && random_no2 > random_no3) return random_no3 > random_no1 ? random_no3 : random_no1;
@@ -87,7 +87,8 @@ const count_zeroes_ones_twos = (num1, num2) => {
 document.write('4. ' + count_zeroes_ones_twos(0, 2) + '<br/>');
 
 // 5.
-document.write('<h3>5. ' + rand(1, 6) + '</h3>');
+let randomNo = rand(1, 6);
+document.write(`<h${randomNo}>5. ${randomNo}</h${randomNo}>`);
 
 // 6.
 const getStyledHtmlNumber = (num1, num2) => {
