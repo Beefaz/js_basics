@@ -1,3 +1,5 @@
+document.write('<h1>1. Math</h1><br/>');
+
 // global functions
 const rand = (min, max) => {
   min = Math.ceil(min);
@@ -270,5 +272,4 @@ const sortRandomSixNumbers = (num1, num2) => {
 }
 document.write('10. end ' + sortRandomSixNumbers(1000, 9999) + '<br/><br/>');
 
-
-document.write('<a href="Kintamieji%20ir%20sąlygos.pdf">Užduotis</a>')
+document.write('<a href="1Kintamieji%20ir%20sąlygos.pdf">Užduotis</a></br></br>')
