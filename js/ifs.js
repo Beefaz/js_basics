@@ -185,85 +185,85 @@ const sortRandomSixNumbers = (num1, num2) => {
   document.write('10. start ' + `${random_no6} ${random_no5} ${random_no4} ${random_no3} ${random_no2} ${random_no1}`, '<br/>');
 
   //5x
-  if (random_no6 - random_no5 < 0) {
+  if (random_no6 < random_no5) {
     const tempValue = random_no6;
     random_no6 = random_no5;
     random_no5 = tempValue;
   }
-  if (random_no5 - random_no4 < 0) {
+  if (random_no5 < random_no4) {
     const tempValue = random_no5;
     random_no5 = random_no4;
     random_no4 = tempValue;
   }
-  if (random_no4 - random_no3 < 0) {
+  if (random_no4 < random_no3) {
     const tempValue = random_no4;
     random_no4 = random_no3;
     random_no3 = tempValue;
   }
-  if (random_no3 - random_no2 < 0) {
+  if (random_no3 < random_no2) {
     const tempValue = random_no3;
     random_no3 = random_no2;
     random_no2 = tempValue;
   }
-  if (random_no2 - random_no1 < 0) {
+  if (random_no2 < random_no1) {
     const tempValue = random_no2;
     random_no2 = random_no1;
     random_no1 = tempValue;
   }
 
   //4x
-  if (random_no6 - random_no5 < 0) {
+  if (random_no6 < random_no5) {
     const tempValue = random_no6;
     random_no6 = random_no5;
     random_no5 = tempValue;
   }
-  if (random_no5 - random_no4 < 0) {
+  if (random_no5 < random_no4) {
     const tempValue = random_no5;
     random_no5 = random_no4;
     random_no4 = tempValue;
   }
-  if (random_no4 - random_no3 < 0) {
+  if (random_no4 < random_no3) {
     const tempValue = random_no4;
     random_no4 = random_no3;
     random_no3 = tempValue;
   }
-  if (random_no3 - random_no2 < 0) {
+  if (random_no3 < random_no2) {
     const tempValue = random_no3;
     random_no3 = random_no2;
     random_no2 = tempValue;
   }
 
   //3x
-  if (random_no6 - random_no5 < 0) {
+  if (random_no6 < random_no5) {
     const tempValue = random_no6;
     random_no6 = random_no5;
     random_no5 = tempValue;
   }
-  if (random_no5 - random_no4 < 0) {
+  if (random_no5 < random_no4) {
     const tempValue = random_no5;
     random_no5 = random_no4;
     random_no4 = tempValue;
   }
-  if (random_no4 - random_no3 < 0) {
+  if (random_no4 < random_no3) {
     const tempValue = random_no4;
     random_no4 = random_no3;
     random_no3 = tempValue;
   }
 
   //2x
-  if (random_no6 - random_no5 < 0) {
+  if (random_no6 < random_no5) {
     const tempValue = random_no6;
     random_no6 = random_no5;
     random_no5 = tempValue;
   }
-  if (random_no5 - random_no4 < 0) {
+  if (random_no5 < random_no4) {
     const tempValue = random_no5;
     random_no5 = random_no4;
     random_no4 = tempValue;
   }
 
   //1x
-  if (random_no6 - random_no5 < 0) {
+  if (random_no6 < random_no5 ) {
     const tempValue = random_no6;
     random_no6 = random_no5;
     random_no5 = tempValue;
