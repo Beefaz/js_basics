@@ -1,5 +1,12 @@
-document.write('<h1>2. Strings</h1><br/>');
+// global functions
+const rand = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
+
+document.write('<h1>2. Strings</h1><br/>');
 // ------------TASKS------------------
 // 1.
 const getShorterString = () => {
@@ -83,4 +90,4 @@ const generateRandomLetters = () => {
 document.write('9. ' + generateRandomLetters() + '<br/>');
 
 
-document.write('<a href="2Stringai.pdf">Užduotis</a></br></br>');
+document.write('<a href="../2Stringai.pdf">Užduotis</a></br></br>');
