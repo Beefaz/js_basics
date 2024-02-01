@@ -4,7 +4,9 @@ const rand = (min, max) => {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
-
+document.write('<h5>4. Arrays2</h5><br/>');
+// ------------TASKS------------------
+// 1.
 document.write('<br/><br/>');
 
 document.write('1. Užduotis ' + '<br/><br/>');
@@ -18,6 +20,7 @@ const printRange = () => {
 printRange();
 document.write('<br/><br/>');
 
+// 2.
 document.write('2. Užduotis ' + '<br/><br/>');
 const printIncrementingModel = () => {
   let start = '';
@@ -29,6 +32,7 @@ const printIncrementingModel = () => {
 printIncrementingModel();
 
 
+// 3.
 document.write('3. Užduotis ' + '<br/><br/>');
 const removeRandomString = () => {
   const randomNumber = rand(0, 2);
@@ -51,6 +55,7 @@ const removeRandomString = () => {
 removeRandomString();
 document.write('<br/><br/>');
 
+// 4.
 document.write('4. Užduotis ' + '<br/><br/>');
 const checkPrimeNunbers = () => {
   let numberString = '54 77 2 59 17 19 108';
@@ -84,7 +89,7 @@ const checkPrimeNunbers = () => {
 checkPrimeNunbers();
 document.write('<br/><br/>');
 
-
+// 5.
 document.write('5. Užduotis ' + '<br/><br/>');
 const findRiddleAndswer = () => {
   const string = 'gjrgkjxvbsigdvifpjqyzlzxsxzjnvgojlziaofdfnufymsjqsxxyknqcchmpepoljekhydgmfvhwipvopllndyuddcgxnleutsmprxqlcnxxthdhtpnutqocvtuanouumbkmlxexzmc';

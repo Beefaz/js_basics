@@ -7,7 +7,7 @@ const rand = (min, max) => {
 }
 
 
-document.write('<h1>1. Math</h1><br/>');
+document.write('<h5>1. Ifs</h5><br/>');
 // ------------TASKS------------------
 // 1.
 const name = 'Justinas';
