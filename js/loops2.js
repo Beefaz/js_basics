@@ -11,7 +11,7 @@ document.write('<br/><br/>');
 
 document.write('1. Užduotis ' + '<br/><br/>');
 const printRange = () => {
-  for (let i = 8; i < 31; i++) {
+  for (let i = 7; i <= 31; i++) {
     if (i % 2 !== 0) {
       document.write(i + ' ');
     }
