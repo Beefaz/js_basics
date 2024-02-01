@@ -273,4 +273,4 @@ const sortRandomSixNumbers = (num1, num2) => {
 }
 document.write('10. end ' + sortRandomSixNumbers(1000, 9999) + '<br/><br/>');
 
-document.write('<a href="../1Kintamieji%20ir%20sąlygos.pdf">Užduotis</a></br></br>')
+document.write('<a href="../tasks/1VariablesAndIfs.pdf">Užduotis</a></br></br>')

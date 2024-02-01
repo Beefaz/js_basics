@@ -90,4 +90,4 @@ const generateRandomLetters = () => {
 document.write('9. ' + generateRandomLetters() + '<br/>');
 
 
-document.write('<a href="../2Stringai.pdf">Užduotis</a></br></br>');
+document.write('<a href="../tasks/2Stringai.pdf">Užduotis</a></br></br>');

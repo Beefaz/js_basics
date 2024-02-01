@@ -251,7 +251,7 @@ const generatePrimeNumbers = () => {
 
   for (let i = 0; i < numberList.length; i++) {
     const number = numberList[i];
-
+    //primecheck
     if (number !== 1 && number === 2) {
       primeList.push(number);
     } else {
@@ -302,6 +302,6 @@ const generateClock = () => {
 }
 generateClock();
 
-document.write('<br/><br/><a href="/3Ciklai.pdf">Užduotis</a>');
+document.write('<br/><br/><a href="/tasks/3Ciklai.pdf">Užduotis</a>');
 
 
