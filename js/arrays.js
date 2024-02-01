@@ -210,7 +210,7 @@ const determineHammerStrikeCount = () => {
   let hitcount2 = 0;
   let totalMisses = 0;
 
-  while (nailLength2 > 0) {
+  while (nailLength2 >= 0) {
     const bigHit = rand(5, 20);
     const missed = rand(0, 1);
 
