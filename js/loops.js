@@ -6,7 +6,7 @@ const rand = (min, max) => {
 }
 
 
-document.write('<h5>3. Arrays/Whiles</h5><br/>');
+document.write('<h5>3. Loops</h5><br/>');
 // ------------TASKS------------------
 // 1.
 document.write('1. ');
