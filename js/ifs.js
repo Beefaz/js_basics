@@ -6,8 +6,7 @@ const rand = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-
-document.write('<h5>1. Ifs</h5><br/>');
+document.write('<h4>1. Ifs</h6><br/>');
 // ------------TASKS------------------
 // 1.
 const name = 'Justinas';
