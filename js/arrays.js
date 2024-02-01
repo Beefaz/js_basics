@@ -185,6 +185,9 @@ const determineWinner = () => {
   }
 
   roundWinner = petrasResult > kazysResult ? 'Petras ' + petrasResult : 'Kazys ' + kazysResult;
+  if (petrasResult === kazysResult) {
+    roundWinner = 'noone, both got same points';
+  }
   document.write(`Winner is: ${roundWinner}`);
 }
 determineWinner();
