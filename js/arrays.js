@@ -259,5 +259,60 @@ document.write('<br/>');
 document.write(`Count: ${nonRepeatingSymbolValues.length}`);
 document.write('<br/><br/>');
 
-document.write('<br/><br/><a href="/tasks/5Masyvai.pdf">Užduotis</a>');
+// 10.
+document.write('10. ');
+const randomNumbers = [];
+const randomNumbersWithUniqueVals = [];
+for (let i = 0; i < 101; i++) {
+  randomNumbers.push(rand(0, 300));
+}
 
+for (let i = 0; i < randomNumbers.length; i++) {
+  let checkedNumber = randomNumbers[i];
+  const arrayEnd = randomNumbers.slice(i + 1, randomNumbers.length);
+
+  while (arrayEnd.includes(checkedNumber)) {
+    checkedNumber = rand(0, 300);
+  }
+  randomNumbersWithUniqueVals.push(checkedNumber);
+}
+randomNumbersWithUniqueVals.sort((a, b) => a - b);
+
+const highestNumberXX = randomNumbersWithUniqueVals.slice(randomNumbers.length - 1, randomNumbers.length);
+const remainingNumbers = randomNumbersWithUniqueVals.slice(0, randomNumbers.length - 1);
+
+let array11 = [];
+let array22 = [];
+let array11sum = 0;
+let array22sum = 0;
+
+for (let i = 0; i < remainingNumbers.length; i += 2) {
+  array11.push(remainingNumbers[i]);
+  array22.push(remainingNumbers[i + 1]);
+}
+
+const calculateSums = () => {
+  array11sum = 0;
+  array22sum = 0;
+  for (let value of array11) {
+    array11sum += value;
+  }
+  for (let value of array22) {
+    array22sum += value;
+  }
+}
+calculateSums();
+
+while ((array22sum - 30) > array11sum) {
+  array22.push(array11.shift());
+  array11.push(array22.shift());
+  calculateSums();
+}
+
+const sortedArray1 = [...array11].sort((a, b) => a - b);
+const sortedArray2 = [...array22].sort((a, b) => b - a);
+
+document.write(`NewArray: ${[...sortedArray1, highestNumberXX, ...sortedArray2]}`);
+document.write('<br/><br/>');
+
+document.write('<br/><br/><a href="/tasks/5Masyvai.pdf">Užduotis</a>');

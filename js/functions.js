@@ -27,15 +27,14 @@ document.write('<br/><br/>');
 document.write('3. ');
 const generateHeadingText = function () {
   const string = btoa(Date.now()).replaceAll(/[^A-Z]/g, ' ');
+  let buffer = [];
 
   for (let i = 0; i < string.length; i++) {
-    const nextThreeCharactersAreCapital = string.substring(i, i + 3).match(/[A-Z]{3}/);
-
-    if (nextThreeCharactersAreCapital) {
-      document.write(insertIntoHeadingOne(nextThreeCharactersAreCapital));
-      i += 2;
-    } else if (string[i] !== ' ') {
-      document.write(insertIntoHeadingOne(string[i]));
+    if (string[i].match(/[A-Z]/)) {
+      buffer.push(string[i]);
+    } else if (string[i+1] !== ' ') {
+      document.write(insertIntoHeadingOne(buffer.join('')));
+      buffer = [];
     }
   }
 }
