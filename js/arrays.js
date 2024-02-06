@@ -185,6 +185,79 @@ for (i = 2; i < 10; i++) {
 document.write(`${tenNumbers}`);
 document.write('<br/><br/>');
 
-document.write('<br/><br/><a href="/tasks/5Masyvai.pdf">Užduotis</a>');
+// 7.
+document.write('7. ');
+const randomLetters = [];
 
+for (let i = 0; i < 200; i++) {
+  const random = rand(0, 3);
+  if (random === 0) randomLetters.push('A');
+  if (random === 1) randomLetters.push('B');
+  if (random === 2) randomLetters.push('C');
+  if (random === 3) randomLetters.push('D');
+}
+
+
+let letterAcount = 0;
+let letterBcount = 0;
+let letterCcount = 0;
+let letterDcount = 0;
+
+for (const letter of randomLetters) {
+  if (letter === 'A') letterAcount++;
+  if (letter === 'B') letterBcount++;
+  if (letter === 'C') letterCcount++;
+  if (letter === 'D') letterDcount++;
+}
+document.write(`Letter A count ${letterAcount}; Letter B count ${letterBcount}; Letter C count ${letterCcount}; Letter D count ${letterDcount}`);
+document.write('<br/><br/>');
+
+// 8.
+document.write('8. ');
+const sortedLetters = randomLetters.slice().sort();
+
+document.write(`SortedLetters: ${sortedLetters}`);
+document.write('<br/><br/>');
+
+// 9.
+document.write('9. ');
+const randomLettersAll = [];
+for (let i = 0; i < 600; i++) {
+  const random = rand(0, 3);
+  if (random === 0) randomLettersAll.push('A');
+  if (random === 1) randomLettersAll.push('B');
+  if (random === 2) randomLettersAll.push('C');
+  if (random === 3) randomLettersAll.push('D');
+}
+
+const randomLetters1 = randomLettersAll.splice(0, 200);
+const randomLetters2 = randomLettersAll.splice(0, 200);
+const randomLetters3 = randomLettersAll.splice(0, 200);
+const mergedArray = [];
+
+for (const i in randomLetters1) {
+  mergedArray[i] = `${randomLetters1[i]}${randomLetters2[i]}${randomLetters3[i]}`;
+}
+
+const uniqueValues = [];
+for (const value of mergedArray) {
+  if (!uniqueValues.includes(value)) uniqueValues.push(value);
+}
+
+document.write(`Unique values: ${uniqueValues}`);
+document.write('<br/>');
+document.write(`Count: ${uniqueValues.length}`);
+document.write('<br/><br/>');
+
+const nonRepeatingSymbolValues = [];
+for (const value of uniqueValues) {
+  if (!(value[0] === value[1] && value[1] === value[2])) nonRepeatingSymbolValues.push(value);
+}
+
+document.write(`Non repeating symbol values: ${nonRepeatingSymbolValues}`);
+document.write('<br/>');
+document.write(`Count: ${nonRepeatingSymbolValues.length}`);
+document.write('<br/><br/>');
+
+document.write('<br/><br/><a href="/tasks/5Masyvai.pdf">Užduotis</a>');
 
