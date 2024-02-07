@@ -51,7 +51,7 @@ document.write('<br/><br/>');
 document.write('2.c ');
 let sum = 0;
 for (let i = 0; i < defaultArray.length; i++) {
-  if (defaultArray[i] % 2 === 0) {
+  if (i % 2 === 0) {
     sum += defaultArray[i];
   }
 }
@@ -60,7 +60,7 @@ document.write('<br/><br/>');
 
 // 2d.
 document.write('2.d ');
-const newArray = [];
+let newArray = [];
 for (let i = 0; i < defaultArray.length; i++) {
   newArray.push(defaultArray[i] - i);
 }
