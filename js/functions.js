@@ -32,7 +32,7 @@ const generateHeadingText = function () {
   for (let i = 0; i < string.length; i++) {
     if (string[i].match(/[A-Z]/)) {
       buffer.push(string[i]);
-    } else if (string[i+1] !== ' ') {
+    } else if (string[i + 1] !== ' ') {
       document.write(insertIntoHeadingOne(buffer.join('')));
       buffer = [];
     }
@@ -89,5 +89,26 @@ const filterCompositeNumbers = function () {
 document.write(`${filterCompositeNumbers()}`);
 document.write('<br/><br/>');
 
+document.write('7. ');
+const generateArray = function (depth) {
+  if(depth < 0) {
+    return 0;
+  }
+  depth--;
+
+  let generatedArray = [];
+  let randomLength = rand(10, 20);
+
+  while (randomLength > 1) {
+    generatedArray.push(rand(0, 10));
+    randomLength--;
+  }
+
+  return [...generatedArray, generateArray(depth)];
+}
+
+const randomDepth = rand(10, 30);
+console.log('depth: '+ randomDepth);
+console.log(generateArray(randomDepth));
 
 document.write('<a href="../tasks/6Funkcijos.pdf">Užduotis</a></br></br>');
