@@ -4,7 +4,7 @@ const rand = (min, max) => {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
-
+document.write('<h4>6. Funkcijos</h4><br/>');
 //---------- TASKS ------------
 document.write('<br/><br/>');
 document.write('1. ');

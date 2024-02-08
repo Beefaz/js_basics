@@ -5,7 +5,7 @@ const rand = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-document.write('<h4>5. Masyvai</h4><br/>');
+document.write('<h4>7. Masyvai su metodais</h4><br/>');
 // ------------TASKS------------------ (   no reduce yet... :/ )
 // 1.
 
@@ -20,22 +20,20 @@ document.write('<br/><br/>');
 
 // 2a.
 document.write('2.a ');
-const countValuesOver10 = () =>  [...getDefaultArray()].filter((number) => number > 10);
+const countValuesOver10 = () => getDefaultArray().filter((number) => number > 10);
 document.write(`${countValuesOver10()}`);
 document.write('<br/><br/>');
 
 // 2b.
 document.write('2.b ');
 const writeHighestNumAndIndexes = () => {
-  let numbers = [...getDefaultArray()];
+  let numbers = getDefaultArray();
 
   let highestNumber = 0;
-  numbers.forEach((number, i) =>
-    numbers[i] > highestNumber ? highestNumber = numbers[i] : undefined);
 
-  const indexes = [...numbers]
-    .map((number, index) => number === highestNumber ? index : -1)
-    .filter((item) => item >= 0);
+  numbers.forEach((number, i) => numbers[i] > highestNumber ? highestNumber = numbers[i] : undefined);
+
+  const indexes = [...numbers].reduce((indexes, value, index) => value === highestNumber ? indexes + ` ${index}` : indexes, '');
 
   document.write(`Number: ${highestNumber}, indexes: ${indexes}`);
 }
@@ -44,20 +42,20 @@ document.write('<br/><br/>');
 
 // 2c.
 document.write('2.c ');
-const getSumOfOddIndexes = () => [...getDefaultArray()].reduce((sum, number, index) => index % 2 === 0 ? sum + number : sum, 0);
+const getSumOfOddIndexes = () => getDefaultArray().reduce((sum, number, index) => index % 2 === 0 ? sum + number : sum, 0);
 document.write(`Sum: ${getSumOfOddIndexes()}`);
 document.write('<br/><br/>');
 
 // 2d.
 document.write('2.d ');
-const getArrayWithIndexSubstracted = () => [...getDefaultArray()].map((number, index) => number - index);
+const getArrayWithIndexSubstracted = () => getDefaultArray().map((number, index) => number - index);
 document.write(`${getArrayWithIndexSubstracted()}`);
 document.write('<br/><br/>');
 
 // 2e.
 document.write('2.e ');
 const addTenRandomIntegersToArray = () => {
-  const newArray = [...getDefaultArray()];
+  const newArray = getDefaultArray();
   newArray.length = 40;
   newArray.fill(null);
   return newArray.map((value) => value === null ? rand(2, 25) : value)
@@ -71,31 +69,31 @@ const generateTwoArraysByIndex = () => {
 
   const evenIndexArray = [];
   const oddIndexArray = [];
-  [...getDefaultArray()].forEach((value, index) => {
+  getDefaultArray().forEach((value, index) => {
     return index % 2 === 0 ? evenIndexArray.push(value) : oddIndexArray.push(value);
   })
-  document.write(`Prime index ${evenIndexArray}`);
+  document.write(`Even index ${evenIndexArray}`);
   document.write('<br/>');
-  document.write(`Secondary index ${oddIndexArray}`);
+  document.write(`Odd index ${oddIndexArray}`);
 }
 generateTwoArraysByIndex();
 document.write('<br/><br/>');
 
 // 2g.
 document.write('2.g ');
-const nullifyLowValues = () => [...getDefaultArray()].map((number, index) => number > 15 && index % 2 === 0 ? 0 : number);
+const nullifyLowValues = () => getDefaultArray().map((number, index) => number > 15 && index % 2 === 0 ? 0 : number);
 document.write(`Array with nullified values: ${nullifyLowValues()}`);
 document.write('<br/><br/>');
 
 // 2h.
 document.write('2.h ');
-const getFirstIndex = () => [...getDefaultArray()].findIndex((val) => val > 10);
+const getFirstIndex = () => getDefaultArray().findIndex((val) => val > 10);
 document.write(`Index of first value above 10: ${getFirstIndex()}`);
 document.write('<br/><br/>');
 
 // 2i.
 document.write('2.i ');
-const removeOddIndexes = () => [...getDefaultArray()].reduce((acc, number, index) => index % 2 !== 0 ? [...acc, number] : acc, []);
+const removeOddIndexes = () => getDefaultArray().reduce((acc, number, index) => index % 2 !== 0 ? [...acc, number] : acc, []);
 document.write(`Remaining array w/o odd indexes: ${removeOddIndexes()}`);
 document.write('<br/><br/>');
 
@@ -142,7 +140,7 @@ const generateTenIncrementingNumbers = () => {
   tenNumbers.length = 10;
   return tenNumbers.fill(null, 2).reduce((acc, number, index) => number === null ? [...acc, acc[index - 2] + acc[index - 1]] : [...acc, number], []);
 }
-document.write(`${generateTenIncrementingNumbers()}`);
+document.write(`Numbers with sum of previous two: ${generateTenIncrementingNumbers()}`);
 document.write('<br/><br/>');
 
 // 7.
@@ -162,7 +160,7 @@ const generateRandomLetters = () => {
   );
 }
 const generateLetterCountsString = (randomLetterArray = []) => {
-  const uniqueValues = [...randomLetterArray].reduce((acc, val) => !acc.includes(val) ? [...acc, val] : acc, []);
+  const uniqueValues = randomLetterArray.reduce((acc, val) => !acc.includes(val) ? [...acc, val] : acc, []);
   uniqueValues.sort();
 
   let finalString = '';
@@ -226,18 +224,14 @@ for (let i = 0; i < randomNumbers.length; i++) {
 }
 randomNumbersWithUniqueVals.sort((a, b) => a - b);
 
-const highestNumberXX = randomNumbersWithUniqueVals.slice(randomNumbers.length - 1, randomNumbers.length);
-const remainingNumbers = randomNumbersWithUniqueVals.slice(0, randomNumbers.length - 1);
+const highestNumber = randomNumbersWithUniqueVals.splice(randomNumbers.length - 1, randomNumbers.length);
 
 let array11 = [];
 let array22 = [];
 let array11sum = 0;
 let array22sum = 0;
 
-for (let i = 0; i < remainingNumbers.length; i += 2) {
-  array11.push(remainingNumbers[i]);
-  array22.push(remainingNumbers[i + 1]);
-}
+randomNumbersWithUniqueVals.forEach((number, index) => index % 2 === 0 ? array11.push(number) : array22.push(number));
 
 const calculateSums = () => {
   array11sum = 0;
@@ -251,16 +245,18 @@ const calculateSums = () => {
 }
 calculateSums();
 
-while ((array22sum - 30) > array11sum) {
-  array22.push(array11.shift());
-  array11.push(array22.shift());
-  calculateSums();
+for (const value of randomNumbersWithUniqueVals) {
+  if ((array22sum - 30) > array11sum) {
+    array22.push(array11.shift());
+    array11.push(array22.shift());
+    calculateSums();
+  }
 }
 
 const sortedArray1 = [...array11].sort((a, b) => a - b);
 const sortedArray2 = [...array22].sort((a, b) => b - a);
 
-document.write(`NewArray: ${[...sortedArray1, highestNumberXX, ...sortedArray2]}`);
+document.write(`NewArray: ${[...sortedArray1, highestNumber, ...sortedArray2]}`);
 document.write('<br/><br/>');
 
 document.write('<br/><br/><a href="/tasks/5Masyvai.pdf">Užduotis</a>');

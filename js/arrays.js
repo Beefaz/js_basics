@@ -78,19 +78,19 @@ document.write('<br/><br/>');
 
 // 2f.
 document.write('2.f ');
-const primeIndexArray = [];
-const secondaryIndexArray = [];
+const evenIndexArray = [];
+const oddIndexArray = [];
 
 for (let i = 0; i < defaultArray.length; i++) {
   if (i % 2 === 0) {
-    secondaryIndexArray.push(defaultArray[i]);
+    evenIndexArray.push(defaultArray[i]);
   } else {
-    primeIndexArray.push(defaultArray[i]);
+    oddIndexArray.push(defaultArray[i]);
   }
 }
-document.write(`Prime index ${primeIndexArray}`);
+document.write(`Even index ${evenIndexArray}`);
 document.write('<br/>');
-document.write(`Secondary index ${secondaryIndexArray}`);
+document.write(`Odd index ${oddIndexArray}`);
 document.write('<br/><br/>');
 
 // 2g.
@@ -182,7 +182,7 @@ for (i = 2; i < 10; i++) {
   tenNumbers[tenNumbers.length] = tenNumbers[i - 2] + tenNumbers[i - 1];
 }
 
-document.write(`${tenNumbers}`);
+document.write(`Numbers with sum of previous two: ${tenNumbers}`);
 document.write('<br/><br/>');
 
 // 7.
@@ -250,7 +250,7 @@ document.write(`Count: ${uniqueValues.length}`);
 document.write('<br/><br/>');
 
 const nonRepeatingSymbolValues = [];
-for (const value of uniqueValues) {
+for (const value of mergedArray) {
   if (!(value[0] === value[1] && value[1] === value[2])) nonRepeatingSymbolValues.push(value);
 }
 
