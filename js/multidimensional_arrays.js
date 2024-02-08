@@ -78,8 +78,10 @@ console.log('---------------------');
 console.log('2e. ');
 const sumChildValues = (arrayWithChildArrays) => {
   console.log(arrayWithChildArrays);
+
   let equalIndexSums = [];
   equalIndexSums.length = arrayWithChildArrays[0].length;
+
   for (let i = 0; i < arrayWithChildArrays.length; i++) {
     equalIndexSums[i] = 0;
     for (let ii = 0; ii < arrayWithChildArrays[i].length; ii++) {
@@ -103,7 +105,6 @@ const generate2dLetterArray = () => {
     for (let ii = 0; ii < childLength; ii++) {
       firstLevelArray[i][ii] = letters[rand(0, letters.length - 1)];
     }
-
     firstLevelArray[i].sort();
   }
   return [...firstLevelArray];
