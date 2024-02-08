@@ -4,7 +4,6 @@ const rand = (min, max) => {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
-
 document.write('<h4>8. Multidimensional arrays</h4><br/>');
 document.write('<br/><br/>');
 
@@ -23,9 +22,11 @@ const generate2dArray = () => {
 console.log(generate2dArray());
 console.log('---------------------');
 
+
 console.log('2a. ');
 const countValuesAbove10 = (arrayWithChildArrays) => {
   let count = 0;
+
   for (let i = 0; i < arrayWithChildArrays.length; i++) {
     for (let ii = 0; ii < arrayWithChildArrays[i].length; ii++) {
       if (arrayWithChildArrays[i][ii] > 10) count++;
@@ -36,9 +37,11 @@ const countValuesAbove10 = (arrayWithChildArrays) => {
 console.log(countValuesAbove10(generate2dArray()));
 console.log('---------------------');
 
+
 console.log('2b. ');
 const getHighestValue = (arrayWithChildArrays) => {
   let max = 0;
+
   for (let i = 0; i < arrayWithChildArrays.length; i++) {
     for (let ii = 0; ii < arrayWithChildArrays[i].length; ii++) {
       if (arrayWithChildArrays[i][ii] > max) max = arrayWithChildArrays[i][ii];
@@ -52,9 +55,11 @@ console.log('---------------------');
 console.log('2c. ');
 const countEqualIndexes = (arrayWithChildArrays) => {
   console.log(arrayWithChildArrays);
+
   let equalIndexSums = [];
   equalIndexSums.length = arrayWithChildArrays[0].length;
   equalIndexSums.fill(0);
+
   for (let i = 0; i < arrayWithChildArrays.length; i++) {
     for (let ii = 0; ii < arrayWithChildArrays[i].length; ii++) {
       equalIndexSums[ii] += arrayWithChildArrays[i][ii];
@@ -64,6 +69,7 @@ const countEqualIndexes = (arrayWithChildArrays) => {
 }
 console.log(countEqualIndexes(generate2dArray()));
 console.log('---------------------');
+
 
 console.log('2d. ');
 const extendSecondLevels = (arrayWithChildArrays) => {
@@ -93,6 +99,7 @@ const sumChildValues = (arrayWithChildArrays) => {
 console.log(sumChildValues(generate2dArray()));
 console.log('---------------------');
 
+
 console.log('3. ');
 const generate2dLetterArray = () => {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -111,6 +118,7 @@ const generate2dLetterArray = () => {
 }
 console.log(generate2dLetterArray());
 console.log('---------------------');
+
 
 console.log('4. ');
 const sort2ndDimension = (arrayWithChildArrays, letter = 'K') => {
