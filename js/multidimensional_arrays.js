@@ -5,7 +5,7 @@ const rand = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-document.write('<h4>7. Multidimensiniai masyvai</h4><br/>');
+document.write('<h4>8. Multidimensional arrays</h4><br/>');
 document.write('<br/><br/>');
 
 

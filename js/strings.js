@@ -6,7 +6,7 @@ const rand = (min, max) => {
 }
 
 
-document.write('<h4>2. Ifs</h5><br/>');
+document.write('<h4>2. Strings</h5><br/>');
 // ------------TASKS------------------
 // 1.
 const getShorterString = () => {

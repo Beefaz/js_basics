@@ -5,7 +5,7 @@ const rand = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-document.write('<h4>7. Masyvai su metodais</h4><br/>');
+document.write('<h4>7. Arrays with methods</h4><br/>');
 // ------------TASKS------------------ (   no reduce yet... :/ )
 // 1.
 
