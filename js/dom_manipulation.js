@@ -20,7 +20,8 @@ const info = {
 let createEl = (tag) => document.createElement(tag);
 
 //body
-const bodyElement = document.body
+const bodyElement = document.body;
+
 const bodyStyle = {
   width: '100%',
   minHeight: '100vh',

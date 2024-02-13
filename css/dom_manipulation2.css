@@ -12,14 +12,28 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow-x: hidden;
 }
 
 .header {
+    width: 100%;
     position: sticky;
+    z-index: 2;
     top: 0;
     min-height: 20px;
-    background: white;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: white;
 }
+
+.header .links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex: 1 1 100%;
+}
+
 
 main {
     width: 100%;
@@ -30,10 +44,25 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
     font-size: 60px;
     color: var(--main-font-color);
-    background-color: rgba(255, 255, 255, 1);
+}
+
+section {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+hr {
+    margin: 20px 0;
+    height: 2px;
+    width: 100%;
 }
 
 .container {
@@ -46,17 +75,53 @@ main {
     background-color: rgba(187, 173, 160, 1);
 }
 
+.bg-swapper {
+    flex: 1 0 min-content;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.bg-swapper button:hover {
+    filter: invert(10%);
+}
+
+.bg-swapper button.red {
+    background-color: red;
+    border: 2px solid black;
+    color: white;
+}
+
+.bg-swapper button.blue {
+    background-color: blue;
+    border: 2px solid black;
+    color: white;
+}
+
+.bg-swapper button.white {
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+}
+
 [class|="box"] {
     width: 100px;
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+[class|="box"]:hover {
+    scale: 1.2;
 }
 
 .box-0 {
     background-color: rgba(205, 193, 180, 1);
 }
+
 .box-2 {
     background-color: rgba(238, 228, 218, 1);
 }
@@ -84,4 +149,164 @@ main {
     background-color: rgb(158, 65, 16);
     color: var(--secondary-font-color);
 }
+
+button {
+    all: unset;
+    width: 100%;
+    max-width: fit-content;
+    padding: 20px 40px;
+    display: flex;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.reset-game-btn {
+    background: rgba(243, 178, 122, 1);
+    border: 1px solid rgba(246, 150, 100, 1);
+    color: #580303;
+}
+
+.reset-game-btn:hover {
+    background: rgb(158, 65, 16);
+    border: 1px solid rgba(246, 150, 100, 1);
+    color: white;
+}
+
+.teleloto {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.teleloto-controls {
+    position: relative;
+}
+
+.teleloto .balls {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.teleloto .ball {
+    min-width: 110px;
+    width: 110px;
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+    position: relative;
+    text-align: center;
+    user-select: none;
+    animation: 1s linear 0s 1 slide-in;
+    text-shadow: -1px 0 2px black, 0 1px 2px black, 1px 0 2px black, 0 -1px 2px black;
+}
+
+.teleloto .ball-content {
+    animation: 1s linear 0s 1 roll;
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translateX(100vw);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes roll {
+    0% {
+        rotate: 720deg;
+    }
+    25% {
+        rotate: 540deg;
+    }
+    50% {
+        rotate: 360deg;
+    }
+    75% {
+        rotate: 180deg;
+    }
+    100% {
+        rotate: 0;
+    }
+}
+
+.ball:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    bottom: 19%;
+    left: 5%;
+    width: 90%;
+    height: 13%;
+    border-radius: 43%;
+    box-shadow: -7px 24px 5px black;
+}
+
+.teleloto .ball.yellow {
+    background: radial-gradient(circle 106px at 83px 14px, white, yellow, black)
+}
+
+.teleloto .ball.red {
+    background: radial-gradient(circle 106px at 83px 14px, white, red, black)
+}
+
+.teleloto .ball.green {
+    background: radial-gradient(circle 106px at 83px 14px, white, green, black)
+}
+
+.teleloto .ball.blue {
+    background: radial-gradient(circle 106px at 83px 14px, white, blue, black)
+}
+
+.teleloto .ball.black {
+    background: radial-gradient(circle 106px at 83px 14px, white, black, black)
+}
+
+.teleloto .ball.gold {
+    background: radial-gradient(circle 106px at 83px 14px, white, #ffa600, black)
+}
+
+#restart-teleloto {
+    display: none;
+}
+
+.congratulate {
+    animation: 1s ease-out 0s 1 slide-in;
+    flex: 1;
+}
+
+.congratulate:before {
+    content: 'Skambutis!!!';
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
+    color: gold;
+    animation: pulse 2s infinite;
+    text-shadow: -1px 0 2px black, 0 1px 2px black, 1px 0 2px black, 0 -1px 2px black;
+}
+
+@keyframes pulse {
+    0% {
+        scale: 1;
+    }
+    50% {
+        scale: 1.25;
+    }
+    100% {
+        scale: 1;
+    }
+}
+
 

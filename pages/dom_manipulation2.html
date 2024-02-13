@@ -9,21 +9,62 @@
 </head>
 <body>
 <div class="header">
-    <a href="/index.html">Home</a>
-    <a href="/pages/ifs.html">Ifs</a>
-    <a href="/pages/strings.html">Strings</a>
-    <a href="/pages/loops.html">Loops</a>
-    <a href="/pages/loops2.html">Loops2</a>
-    <a href="/pages/arrays.html">Arrays</a>
-    <a href="/pages/functions.html">Functions</a>
-    <a href="/pages/arrays_with_methods.html">Arrays with methods</a>
-    <a href="/pages/multidimensional_arrays.html">Multidimensional arrays</a>
-    <a href="/pages/dom_manipulation.html">Dom1</a>
-    <a href="/pages/dom_manipulation2.html">Dom2</a>
+    <div class="header-bg"></div>
+    <div class="links">
+        <a href="/index.html">Home</a>
+        <a href="/pages/ifs.html">Ifs</a>
+        <a href="/pages/strings.html">Strings</a>
+        <a href="/pages/loops.html">Loops</a>
+        <a href="/pages/loops2.html">Loops2</a>
+        <a href="/pages/arrays.html">Arrays</a>
+        <a href="/pages/functions.html">Functions</a>
+        <a href="/pages/arrays_with_methods.html">Arrays with methods</a>
+        <a href="/pages/multidimensional_arrays.html">Multidimensional arrays</a>
+        <a href="/pages/dom_manipulation.html">Dom1</a>
+        <a href="/pages/dom_manipulation2.html">Dom2</a>
+    </div>
 </div>
 <main>
-    <div id="game-box" class="container">
-    </div>
+    <section>
+        <div id="bg-swapper" class="bg-swapper">
+            <button type="button" class="blue">Blue</button>
+            <button type="button" class="red">Red</button>
+            <button type="button" class="white">White</button>
+        </div>
+        <div id="game-box" class="container">
+        </div>
+        <button type="button"
+                id="reset-game-btn"
+                class="reset-game-btn"
+                onclick="generateNewGame()">
+            Reset game
+        </button>
+
+    </section>
+    <hr>
+    <section>
+        <div class="teleloto" id="teleloto">
+            <span>Teleloto</span>
+            <div class="balls">
+            </div>
+
+            <div class="teleloto-controls">
+                <button type="button"
+                        id="start-teleloto"
+                        class="reset-game-btn"
+                        onclick="addNewBall()">
+                    Ridenti
+                </button>
+                <button type="button"
+                        id="restart-teleloto"
+                        class="reset-game-btn"
+                        onclick="generateNewTeleloto()">
+                    Pradėti iš naujo
+                </button>
+            </div>
+        </div>
+    </section>
+    <hr>
 </main>
 </body>
 </html>
