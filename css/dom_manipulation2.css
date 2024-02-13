@@ -193,6 +193,22 @@ button {
     flex-wrap: wrap;
 }
 
+.ball-wrapper {
+    position: relative;
+    animation: 2s ease-out 0s 1 slide-in;
+}
+
+.ball-wrapper:before {
+    content: '';
+    position: absolute;
+    bottom: 19%;
+    left: -2%;
+    width: 90%;
+    height: 20%;
+    border-radius: 50%;
+    box-shadow: -7px 24px 5px black;
+}
+
 .teleloto .ball {
     min-width: 110px;
     width: 110px;
@@ -201,16 +217,22 @@ button {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    color: white;
     position: relative;
+    z-index: 1;
     text-align: center;
     user-select: none;
-    animation: 1s linear 0s 1 slide-in;
     text-shadow: -1px 0 2px black, 0 1px 2px black, 1px 0 2px black, 0 -1px 2px black;
+    box-shadow: 6px -14px 10px -8px inset black;
 }
 
 .teleloto .ball-content {
-    animation: 1s linear 0s 1 roll;
+    position: relative;
+    left: 1px;
+    animation: 2s ease-out 0s 1 roll;
+    background-color: #565656;
+    color: transparent;
+    text-shadow: -1px 1px 2px rgba(255, 255, 255, 0.95);
+    background-clip: text;
 }
 
 @keyframes slide-in {
@@ -224,56 +246,35 @@ button {
 
 @keyframes roll {
     0% {
-        rotate: 720deg;
-    }
-    25% {
-        rotate: 540deg;
-    }
-    50% {
-        rotate: 360deg;
-    }
-    75% {
-        rotate: 180deg;
+        rotate: 1080deg;
     }
     100% {
         rotate: 0;
     }
 }
 
-.ball:after {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    bottom: 19%;
-    left: 5%;
-    width: 90%;
-    height: 13%;
-    border-radius: 43%;
-    box-shadow: -7px 24px 5px black;
-}
-
 .teleloto .ball.yellow {
-    background: radial-gradient(circle 106px at 83px 14px, white, yellow, black)
+    background: radial-gradient(circle 106px at 83px 14px, white -10%, yellow 63%, black 120%);
 }
 
 .teleloto .ball.red {
-    background: radial-gradient(circle 106px at 83px 14px, white, red, black)
+    background: radial-gradient(circle 106px at 83px 14px, white -15%, #ff4747 38%, black 120%)
 }
 
 .teleloto .ball.green {
-    background: radial-gradient(circle 106px at 83px 14px, white, green, black)
+    background: radial-gradient(circle 106px at 83px 14px, white -15%, #52c952 38%, black 120%)
 }
 
 .teleloto .ball.blue {
-    background: radial-gradient(circle 106px at 83px 14px, white, blue, black)
+    background: radial-gradient(circle 106px at 83px 14px, white -15%, #5454ff 38%, black 120%)
 }
 
 .teleloto .ball.black {
-    background: radial-gradient(circle 106px at 83px 14px, white, black, black)
+    background: radial-gradient(circle 106px at 83px 14px, white -15%, black 38%, black 120%)
 }
 
 .teleloto .ball.gold {
-    background: radial-gradient(circle 106px at 83px 14px, white, #ffa600, black)
+    background: radial-gradient(circle 106px at 83px 14px, white -15%, #ffa600 38%, black 120%)
 }
 
 #restart-teleloto {
@@ -281,7 +282,7 @@ button {
 }
 
 .congratulate {
-    animation: 1s ease-out 0s 1 slide-in;
+    animation: 2s ease-out 0s 1 slide-in;
     flex: 1;
 }
 

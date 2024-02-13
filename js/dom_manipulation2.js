@@ -73,16 +73,19 @@ const generateColor = (number) => {
 }
 
 const createBall = (number) => {
+  const ballWrapper = document.createElement('div');
   const ball = document.createElement('div');
   const ballContent = document.createElement('div');
   const color = generateColor(number);
 
+  ballWrapper.classList.add('ball-wrapper');
   ball.classList.add('ball', color);
   ballContent.classList.add('ball-content');
   ballContent.innerText = `${number}`;
 
+  ballWrapper.append(ball);
   ball.append(ballContent);
-  return ball;
+  return ballWrapper;
 }
 
 
@@ -122,7 +125,3 @@ const ringTheBell = () => {
     restartBtn.style.display = 'initial';
   }, 4000);
 }
-
-
-
-
