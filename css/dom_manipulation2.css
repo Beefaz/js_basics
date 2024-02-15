@@ -162,13 +162,13 @@ button {
     user-select: none;
 }
 
-.reset-game-btn {
+.game-btn {
     background: rgba(243, 178, 122, 1);
     border: 1px solid rgba(246, 150, 100, 1);
     color: #580303;
 }
 
-.reset-game-btn:hover {
+.game-btn:hover {
     background: rgb(158, 65, 16);
     border: 1px solid rgba(246, 150, 100, 1);
     color: white;
@@ -311,4 +311,54 @@ button {
     }
 }
 
+.square-hitter-container {
+    width: 100%;
+    font-size: 16px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.square-hitter-container .side-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#square-hitter {
+    height: 500px;
+    width: 500px;
+    background: black;
+    position: relative;
+}
+
+#square-hitter .square {
+    width: 50px;
+    height: 50px;
+    background: white;
+    cursor: pointer;
+    position: absolute;
+    box-sizing: border-box;
+    border: 1px solid white;
+}
+
+.square-hitter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.square-hitter-controls button {
+    padding: 10px 10px;
+    font-size: 16px;
+}
+
+#square-hitter-rounds {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
