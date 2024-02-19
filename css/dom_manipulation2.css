@@ -162,17 +162,20 @@ button {
     user-select: none;
 }
 
-.game-btn {
+.btn-default {
     background: rgba(243, 178, 122, 1);
     border: 1px solid rgba(246, 150, 100, 1);
     color: #580303;
+    box-sizing: border-box;
 }
 
-.game-btn:hover {
+.btn-default:hover {
     background: rgb(158, 65, 16);
     border: 1px solid rgba(246, 150, 100, 1);
     color: white;
 }
+
+/*-------------- teleloto ------------------*/
 
 .teleloto {
     width: 100%;
@@ -311,6 +314,8 @@ button {
     }
 }
 
+/*-------------- square game ------------------*/
+
 .square-hitter-container {
     width: 100%;
     font-size: 16px;
@@ -318,6 +323,7 @@ button {
     gap: 20px;
     justify-content: center;
 }
+
 .square-hitter-container .side-left {
     display: flex;
     flex-direction: column;
@@ -351,8 +357,10 @@ button {
 }
 
 .square-hitter-controls button {
+    min-width: 150px;
     padding: 10px 10px;
     font-size: 16px;
+    justify-content: center;
 }
 
 #square-hitter-rounds {
@@ -362,3 +370,99 @@ button {
     gap: 10px;
 }
 
+/*-------------- clocks ------------------*/
+.hidden {
+    display: none;
+}
+
+.clock-switcher {
+    display: flex;
+    gap: 10px;
+}
+
+.input-wrapper {
+    position: relative;
+    max-width: min-content;
+}
+
+#timer-ui-display {
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+#timer-input {
+    all: unset;
+    height: 100%;
+    width: 2px;
+    position: absolute;
+    left: 100%;
+    text-align: end;
+    overflow: hidden;
+    letter-spacing: 2px;
+    user-select: none;
+    pointer-events: none;
+}
+
+.timer-container button {
+    flex: 1 1 50%;
+    max-width: unset;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+}
+
+.timer-container button.active {
+    border: 2px solid rgba(158, 65, 16, 1);
+}
+
+.timer-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 500px;
+}
+
+.timer-container span {
+    font-size: 40px;
+}
+
+.clock-controls {
+    display: flex;
+    gap: 10px;
+}
+
+
+/*-------------- autocomplete ------------------*/
+#autocomplete-container {
+    display: flex;
+    position: relative;
+}
+
+#autocomplete-input {
+    height: 20px;
+    font-size: 16px;
+    padding: 10px 10px;
+    min-width: 100%;
+}
+.autocomplete-options {
+    width: 100%;
+    position: absolute;
+    bottom: 100%;
+    background: white;
+    margin: 0 1px;
+}
+
+.autocomplete-options .input-option {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    background: white;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    cursor: pointer;
+}
+.autocomplete-options .input-option:hover {
+    background: rgba(158, 65, 16, 1);
+    color: white;
+}
