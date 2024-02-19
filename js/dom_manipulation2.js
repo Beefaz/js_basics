@@ -577,7 +577,6 @@ const handleInput = {
     const spanWrappedMatchingStr = `<span>${matchingStr}</span>`;
 
     const element = document.createElement('div');
-
     element.className = 'input-option';
     element.innerHTML = string.replace(matchingStr, spanWrappedMatchingStr);
     element.onclick = () => this.selectOption(string);
