@@ -319,7 +319,7 @@ const timer = {
     return {hours, minutes, seconds};
   },
   setTimer: function (el) {
-    el.value = el.value.substring().replace(/[^0-9]/g, '');
+    el.value = el.value.replace(/[^0-9]/g, '');
     let input = [...`${el.value}`].reverse().map((string) => parseInt(string));
 
     this.clockUIDisplay.innerHTML = `
@@ -562,15 +562,11 @@ const handleInput = {
       googleStrings
         .filter((sentence) =>
           sentence.toUpperCase().includes(el.value.toUpperCase()))
-        .sort((a, b) => a.toUpperCase() - b.toUpperCase())
+        .sort()
         .slice(0, 5)
         .map((string) => this.createOptionElement(string, el.value));
 
     this.options.replaceChildren(...filteredMappedElements);
-  },
-  selectOption: function (string) {
-    this.input.value = string;
-    this.removeSuggestions();
   },
   createOptionElement: function (string, matchingString) {
     const matchingStr = string.match(new RegExp(`${matchingString}`, 'i'));
@@ -581,6 +577,10 @@ const handleInput = {
     element.innerHTML = string.replace(matchingStr, spanWrappedMatchingStr);
     element.onclick = () => this.selectOption(string);
     return element;
+  },
+  selectOption: function (string) {
+    this.input.value = string;
+    this.removeSuggestions();
   },
   removeSuggestions: function () {
     this.options.innerHTML = '';
