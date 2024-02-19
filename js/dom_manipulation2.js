@@ -556,24 +556,34 @@ const handleInput = {
   input: document.getElementById('autocomplete-input'),
   options: document.getElementById('autocomplete-options'),
   getOptions: function (el) {
+    if (el.value === '') return this.removeSuggestions();
+
     const filteredMappedElements =
       googleStrings
         .filter((sentence) =>
           sentence.toUpperCase().includes(el.value.toUpperCase()))
         .sort((a, b) => a.toUpperCase() - b.toUpperCase())
         .slice(0, 5)
-        .map((string) => this.createOptionElement(string));
+        .map((string) => this.createOptionElement(string, el.value));
+
     this.options.replaceChildren(...filteredMappedElements);
   },
   selectOption: function (string) {
     this.input.value = string;
-    this.options.innerHTML = '';
+    this.removeSuggestions();
   },
-  createOptionElement: function (string) {
+  createOptionElement: function (string, matchingString) {
+    const matchingStr = string.match(new RegExp(`${matchingString}`, 'i'));
+    const spanWrappedMatchingStr = `<span>${matchingStr}</span>`;
+
     const element = document.createElement('div');
+
     element.className = 'input-option';
-    element.innerHTML = string;
+    element.innerHTML = string.replace(matchingStr, spanWrappedMatchingStr);
     element.onclick = () => this.selectOption(string);
     return element;
+  },
+  removeSuggestions: function () {
+    this.options.innerHTML = '';
   }
 }

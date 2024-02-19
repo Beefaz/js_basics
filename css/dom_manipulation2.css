@@ -436,20 +436,23 @@ button {
 #autocomplete-container {
     display: flex;
     position: relative;
+    width: 400px;
 }
 
 #autocomplete-input {
     height: 20px;
-    font-size: 16px;
     padding: 10px 10px;
     min-width: 100%;
+    font: inherit;
+    font-size: 16px;
+    color: var(--main-font-color);
 }
+
 .autocomplete-options {
     width: 100%;
     position: absolute;
     bottom: 100%;
     background: white;
-    margin: 0 1px;
 }
 
 .autocomplete-options .input-option {
@@ -462,6 +465,11 @@ button {
     border-right: 2px solid black;
     cursor: pointer;
 }
+
+.autocomplete-options .input-option span {
+    background: yellow;
+}
+
 .autocomplete-options .input-option:hover {
     background: rgba(158, 65, 16, 1);
     color: white;
