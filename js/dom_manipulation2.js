@@ -137,30 +137,89 @@ const squareGame = {
   roundsElement: document.getElementById('square-hitter-rounds'),
   userScore: 0,
   pcScore: 0,
-  maxScore: 30,
+  maxScore: 10,
   timers: [],
   rounds: [],
   round: 0,
   level: 1,
   roundEnded: true,
   gameTick: 1000,
-  addUserScore: function (score) {
-    this.userScore += score;
+  createNewBox() {
+    const roundEnded = this.checkGameEnd();
+    if (roundEnded) return;
+
+    const box = document.createElement('div');
+    box.classList.add('square');
+    this.gameContainer.append(box);
+    box.style.backgroundColor = `rgba(${rand(0, 255)}, ${rand(0, 255)}, ${rand(0, 255)}, 1)`;
+    box.style.top = `${rand(box.clientHeight, this.gameContainer.clientHeight) - box.clientHeight}px`;
+    box.style.left = `${rand(box.clientWidth, this.gameContainer.clientWidth) - box.clientWidth}px`;
+
+    //handlePcAction
+    let clicked = false;
+    const currentTimer = window.setTimeout(() => {
+      if (!clicked) {
+        this.removeTimer(currentTimer);
+        const pcClickSound = new Audio('/assets/sounds/error.mp3');
+        pcClickSound.play();
+        this.addPcScore(1);
+        this.updateStatsUI();
+        box.remove();
+        this.createNewBox();
+      }
+    }, this.gameTick);
+    this.addTimer(currentTimer);
+
+    //handleUserAction
+    const boxClickHandler = (e) => {
+      clicked = true;
+      this.removeTimer(currentTimer);
+      const playerClickSound = new Audio('/assets/sounds/click.mp3');
+      playerClickSound.play();
+      e.target.remove();
+      this.addUserScore(1);
+      this.updateStatsUI();
+      this.createNewBox();
+    }
+
+    box.addEventListener('click', (e) => boxClickHandler(e));
   },
-  addPcScore: function (score) {
-    this.pcScore += score;
+  startNewBoxGame () {
+    this.gameContainer.innerHTML = '';
+    this.roundsElement.innerHTML = '';
+    this.clearAllTimers();
+    this.resetDefaults();
+    this.updateStatsUI();
+    this.createNewBox();
   },
-  addLevel: function () {
+  increaseGameLevel(){
+    if (this.gameTick <= 300 || !this.roundEnded) return;
     this.level += 1;
     this.maxScore += 2;
     this.gameTick -= 50;
+    this.updateStatsUI();
   },
-  reduceLevel: function () {
+  decreaseGameLevel(){
+    if (this.gameTick >= 1000 || !this.roundEnded) return;
     this.level -= 1;
     this.maxScore -= 2;
     this.gameTick += 50;
+    this.updateStatsUI();
   },
-  checkGameEnd: function () {
+  startNewRound() {
+    if (!this.roundEnded) return;
+
+    this.gameContainer.innerHTML = '';
+    this.setupNextRound();
+    this.createNewBox();
+  },
+  addUserScore(score) {
+    this.userScore += score;
+  },
+  addPcScore(score) {
+    this.pcScore += score;
+  },
+  checkGameEnd() {
     if (this.userScore >= this.maxScore || this.pcScore >= this.maxScore) {
       if (this.round === 0) this.round++;
       this.roundEnded = true;
@@ -174,28 +233,28 @@ const squareGame = {
     }
     return this.roundEnded;
   },
-  setupNextRound: function () {
+  setupNextRound() {
     this.userScore = 0;
     this.pcScore = 0;
     this.timers = [];
     this.round++;
     this.roundEnded = false;
-    this.addLevel();
+    this.increaseGameLevel();
   },
-  addTimer: function (number) {
+  addTimer(number) {
     this.timers = [...this.timers, number];
   },
-  removeTimer: function (number) {
+  removeTimer(number) {
     clearTimeout(number);
     this.timers = this.timers.filter((num) => num !== number);
   },
-  clearAllTimers: function () {
+  clearAllTimers() {
     this.timers.forEach((id) => {
       clearTimeout(id);
     });
     this.timers = [];
   },
-  resetDefaults: function () {
+  resetDefaults() {
     this.userScore = 0;
     this.pcScore = 0;
     this.timers = [];
@@ -203,10 +262,10 @@ const squareGame = {
     this.round = 1;
     this.roundEnded = false;
   },
-  updateStatsUI: function () {
+  updateStatsUI() {
     this.statElement.innerHTML = `Your points: ${this.userScore ?? 0}<br>AI points: ${this.pcScore ?? 0}<br>Game ends at: ${this.maxScore ?? 30}<br>Level: ${this.level}`;
   },
-  updateRoundsUI: function () {
+  updateRoundsUI() {
     let contentString = ''
     this.rounds.forEach(({winner, round, level}) => {
       contentString += `<div class="round"> <div>Round: ${round} Level: ${level}</div><div>Winner: ${winner}</div></div>`
@@ -217,77 +276,6 @@ const squareGame = {
 
 //initiateScore display
 squareGame.updateStatsUI();
-
-const createNewBox = () => {
-  const roundEnded = squareGame.checkGameEnd();
-  if (roundEnded) return;
-
-  const box = document.createElement('div');
-  box.classList.add('square');
-  const gameContainer = squareGame.gameContainer;
-  gameContainer.append(box);
-  box.style.backgroundColor = `rgba(${rand(0, 255)}, ${rand(0, 255)}, ${rand(0, 255)}, 1)`;
-  box.style.top = `${rand(box.clientHeight, gameContainer.clientHeight) - box.clientHeight}px`;
-  box.style.left = `${rand(box.clientWidth, gameContainer.clientWidth) - box.clientWidth}px`;
-
-  //handlePcAction
-  let clicked = false;
-  const currentTimer = window.setTimeout(() => {
-    if (!clicked) {
-      squareGame.removeTimer(currentTimer);
-      const gameover = new Audio('/assets/sounds/error.mp3');
-      gameover.play();
-      squareGame.addPcScore(1);
-      squareGame.updateStatsUI();
-      box.remove();
-      createNewBox();
-    }
-  }, squareGame.gameTick);
-  squareGame.addTimer(currentTimer);
-
-  //handleUserAction
-  const boxClickHandler = (e) => {
-    clicked = true;
-    squareGame.removeTimer(currentTimer);
-    const clickSound = new Audio('/assets/sounds/click.mp3');
-    clickSound.play();
-    e.target.remove();
-    squareGame.addUserScore(1);
-    squareGame.updateStatsUI();
-    createNewBox();
-  }
-
-  box.addEventListener('click', (e) => boxClickHandler(e));
-}
-
-const startNewBoxGame = () => {
-  squareGame.gameContainer.innerHTML = '';
-  squareGame.roundsElement.innerHTML = '';
-  squareGame.clearAllTimers();
-  squareGame.resetDefaults();
-  squareGame.updateStatsUI();
-  createNewBox();
-}
-
-const increaseGameLevel = () => {
-  if (squareGame.gameTick <= 300 || !squareGame.roundEnded) return;
-  squareGame.addLevel();
-  squareGame.updateStatsUI();
-}
-
-const decreaseGameLevel = () => {
-  if (squareGame.gameTick >= 1000 || !squareGame.roundEnded) return;
-  squareGame.reduceLevel();
-  squareGame.updateStatsUI();
-}
-
-const startNewRound = () => {
-  if (!squareGame.roundEnded) return;
-
-  squareGame.gameContainer.innerHTML = '';
-  squareGame.setupNextRound();
-  createNewBox();
-}
 
 // ---------------------------------------------
 // google timer + stopwatch
@@ -552,23 +540,24 @@ const googleStrings = [
   "What does rizz mean"
 ]
 
-const handleInput = {
+const autocomplete = {
   input: document.getElementById('autocomplete-input'),
   options: document.getElementById('autocomplete-options'),
-  getOptions: function (el) {
-    if (el.value === '') return this.removeSuggestions();
+  mount() {
+    autocomplete.input.addEventListener('input', () => autocomplete.getOptions(autocomplete.input));
+  },
+  getOptions(el) {
+    if (el.value.trim() === '') return this.removeSuggestions();
 
-    const filteredMappedElements =
-      googleStrings
-        .filter((sentence) =>
-          sentence.toUpperCase().includes(el.value.toUpperCase()))
-        .sort()
-        .slice(0, 5)
-        .map((string) => this.createOptionElement(string, el.value));
+    const filteredMappedElements = googleStrings
+      .filter(sentence => sentence.toLowerCase().includes(el.value.trim().toLowerCase()))
+      .sort()
+      .slice(0, 5)
+      .map(string => this.createOptionElement(string, el.value));
 
     this.options.replaceChildren(...filteredMappedElements);
   },
-  createOptionElement: function (string, matchingString) {
+  createOptionElement(string, matchingString) {
     const matchingStr = string.match(new RegExp(`${matchingString}`, 'i'));
     const spanWrappedMatchingStr = `<span>${matchingStr}</span>`;
 
@@ -578,11 +567,14 @@ const handleInput = {
     element.onclick = () => this.selectOption(string);
     return element;
   },
-  selectOption: function (string) {
+  selectOption(string) {
     this.input.value = string;
     this.removeSuggestions();
   },
-  removeSuggestions: function () {
+  removeSuggestions() {
     this.options.innerHTML = '';
   }
-}
+};
+
+autocomplete.mount();
+

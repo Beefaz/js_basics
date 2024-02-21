@@ -69,13 +69,12 @@
     <section>
         <div class="square-hitter-container">
             <div class="side-left">
-                <div id="square-hitter" class="square-hitter">
-                </div>
+                <div id="square-hitter" class="square-hitter"></div>
                 <div class="square-hitter-controls">
-                    <button class="btn-default" onclick="startNewBoxGame()">Start new game</button>
-                    <button class="btn-default" onclick="startNewRound()">Start new round</button>
-                    <button class="btn-default" onclick="increaseGameLevel()">Level++</button>
-                    <button class="btn-default" onclick="decreaseGameLevel()">Level--</button>
+                    <button class="btn-default" onclick="squareGame.startNewBoxGame()">Start new game</button>
+                    <button class="btn-default" onclick="squareGame.startNewRound()">Start new round</button>
+                    <button class="btn-default" onclick="squareGame.increaseGameLevel()">Level++</button>
+                    <button class="btn-default" onclick="squareGame.decreaseGameLevel()">Level--</button>
                 </div>
             </div>
             <div class="side-right">
@@ -139,7 +138,7 @@
     <hr>
     <section>
         <div id="autocomplete-container" class="autocomplete">
-            <input type="text" id="autocomplete-input" oninput="handleInput.getOptions(this)">
+            <input type="text" id="autocomplete-input">
             <div class="autocomplete-options" id="autocomplete-options"></div>
         </div>
     </section>
